@@ -54,6 +54,9 @@ public class AudioTools {
         map = null;
     }
 
+    public void addListener(Object object, AudioListener listener) {
+        addListener(object,(BaseAudioListener)listener);
+    }
     public void addListener(Object object, BaseAudioListener listener) {
         if (object == null || listener == null) {
             return;
