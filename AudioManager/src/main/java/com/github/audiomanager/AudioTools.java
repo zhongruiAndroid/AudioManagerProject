@@ -51,6 +51,7 @@ public class AudioTools {
         }
         AudioBroadcast.unRegister(getContext(), audioBroadcast);
         map.clear();
+        audioBroadcast=null;
     }
 
     public void addListener(Object object, AudioListener listener) {
