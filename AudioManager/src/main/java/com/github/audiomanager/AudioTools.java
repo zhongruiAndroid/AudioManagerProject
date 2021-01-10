@@ -32,6 +32,12 @@ public class AudioTools {
     private Context context;
     private AudioManager audioManager;
 
+    public Context getContext(){
+        if(context==null){
+            throw new IllegalStateException("AudioTools.get().init(Context context) context is null");
+        }
+        return context;
+    }
     public void init(Context context) {
         if (context == null) {
             return;
@@ -43,7 +49,7 @@ public class AudioTools {
         if (context == null || audioBroadcast == null) {
             return;
         }
-        AudioBroadcast.unRegister(context, audioBroadcast);
+        AudioBroadcast.unRegister(getContext(), audioBroadcast);
         map.clear();
         map = null;
     }
@@ -53,7 +59,7 @@ public class AudioTools {
             return;
         }
         if (audioBroadcast == null) {
-            audioBroadcast = AudioBroadcast.register(context);
+            audioBroadcast = AudioBroadcast.register(getContext());
         }
         map.put(object, listener);
     }
@@ -104,7 +110,7 @@ public class AudioTools {
 
     public AudioManager getAudioManager() {
         if (audioManager == null) {
-            audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+            audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
         }
         return audioManager;
     }
